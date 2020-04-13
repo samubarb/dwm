@@ -68,7 +68,7 @@ static const char *termcmd[]  = { "st", NULL };
 #define format_str      "%b%d-%H:%M:%S.png"
 
 /* dwm status bar refresh command */
-#define refbar          " && " scripts "refresh-bar.sh"
+#define refbar          "; " scripts "refresh_bar.sh"
 
 /* rofi/dmenu command */
 #define roficmd         "j4-dmenu-desktop --dmenu='rofi -dmenu -p Run -theme purple -i'"
@@ -83,10 +83,10 @@ static const char *termcmd[]  = { "st", NULL };
 #define change_wall     scripts "change-wallpaper.sh"
 
 /* media commands */
-#define media_play      "playerctl play-pause"  refbar
-#define media_stop      "playerctl stop"        refbar
-#define media_next      "playerctl next"        refbar
-#define media_prev      "playerctl previous"    refbar
+#define media_play      "playerctl play-pause"
+#define media_stop      "playerctl stop"
+#define media_next      "playerctl next"
+#define media_prev      "playerctl previous"
 
 /* volume commands */
 #define vol_up          "pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%"        refbar
