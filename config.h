@@ -109,6 +109,10 @@ static const char *termcmd[]  = { "st", NULL };
 /* shutdown dialog */
 #define shutdown_dialog "~/SimpleShutdownDialog/shutdown-dialog"
 
+/* spotify copy to clipborad current song's link */
+#define sp_clip         scripts "sp clip"
+
+
 
 #include <X11/XF86keysym.h>
 static Key keys[] = {
@@ -143,6 +147,7 @@ static Key keys[] = {
     { MODKEY,                   XK_Print,                  spawn,          SHCMD(window_shot) },
     { ShiftMask,                XK_Print,                  spawn,          SHCMD(custom_shot) },
 	{ MODKEY|ShiftMask,         XK_q,                      spawn,          SHCMD(shutdown_dialog) },
+    { MODKEY|ShiftMask,         XK_x,                      spawn,          SHCMD(sp_clip) },
     { MODKEY,                   XK_f,                      fullscreen,     {0} },
 
 	{ MODKEY,                   XK_b,          togglebar,      {0} },
