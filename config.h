@@ -70,12 +70,14 @@ static const char *termcmd[]  = { "st", NULL };
 /* dwm status bar refresh command */
 #define refbar          "; " scripts "refresh_bar.sh"
 
+/* resetting wallpaper */
+#define refwall         "; " scripts "set-wallpaper"
+
 /* rofi/dmenu command */
 #define roficmd         "j4-dmenu-desktop --dmenu='rofi -dmenu -p Run -theme purple -i'"
 
 /* external screen commands */
-#define mons_top        "mons -n top"
-#define ext_above       scripts "external-above.sh"
+#define cycle_monitor   scripts "cycle-monitor.sh"  refwall
 
 /* miscellaneous commands */
 #define lock_pause      scripts "lock-n-pause.sh" refbar
@@ -93,9 +95,9 @@ static const char *termcmd[]  = { "st", NULL };
 #define vol_down        "pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%"        refbar
 #define mute            "pactl set-sink-mute 0 toggle && pactl set-sink-volume 0 30%"   refbar
 
-#define vol_up_ext      "pactl set-sink-mute 1 0 && pactl set-sink-volume 1 +5%"        refbar
-#define vol_down_ext    "pactl set-sink-mute 1 0 && pactl set-sink-volume 1 -5%"        refbar
-#define mute_ext        "pactl set-sink-mute 1 toggle"  refbar
+#define vol_up_ext      "pactl set-sink-mute 2 0 && pactl set-sink-volume 2 +5%"        refbar
+#define vol_down_ext    "pactl set-sink-mute 2 0 && pactl set-sink-volume 2 -5%"        refbar
+#define mute_ext        "pactl set-sink-mute 2 toggle && pactl set-sink-volume 2 30%"   refbar
 
 /* brightness commands */
 #define brightness_up   "xbacklight +5"
@@ -119,8 +121,8 @@ static Key keys[] = {
 	/* modifier                 key                        function        argument */
 	{ MODKEY,                   XK_Return,                 spawn,          {.v = termcmd } },
 	{ MODKEY,                   XK_d,                      spawn,          SHCMD(roficmd) },
-    { MODKEY,                   XK_t,                      spawn,          SHCMD(mons_top) },
-    { MODKEY,                   XK_y,                      spawn,          SHCMD(ext_above) },
+    { MODKEY,                   XK_t,                      spawn,          SHCMD(cycle_monitor) },
+    // { MODKEY,                   XK_y,                      spawn,          SHCMD(ext_above) },
     { MODKEY,                   XK_semicolon,              spawn,          SHCMD(lock_pause) },
     { MODKEY,                   XK_n,                      spawn,          SHCMD(bt_on) },
     { MODKEY,                   XK_c,                      spawn,          SHCMD(change_wall) },
@@ -138,7 +140,7 @@ static Key keys[] = {
     { ShiftMask,                XF86XK_AudioRaiseVolume,   spawn,          SHCMD(vol_up_ext) },
     { ShiftMask,                XF86XK_AudioLowerVolume,   spawn,          SHCMD(vol_down_ext) },
     { ShiftMask,                XF86XK_AudioMute,          spawn,          SHCMD(mute_ext) },
-    { MODKEY|ShiftMask,         XK_m,                      spawn,          SHCMD(mute) },
+    { MODKEY|ShiftMask,         XK_m,                      spawn,          SHCMD(mute_ext) },
     { NOTHING,                  XF86XK_MonBrightnessUp,    spawn,          SHCMD(brightness_up) },
     { NOTHING,                  XF86XK_MonBrightnessDown,  spawn,          SHCMD(brightness_down) },
     { MODKEY,                   XK_equal,                  spawn,          SHCMD(brightness_up) },
