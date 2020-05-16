@@ -13,10 +13,16 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+
+/* from solarized color scheme */
+static const char Base0[]     = "#839496";
+static const char Base00[]    = "#657b83";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+    [SchemeSel]  = { col_gray4, Base0,     Base00    },
+	// [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
 /* tagging */
@@ -78,7 +84,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* external screen commands */
 #define cycle_monitor   scripts "cycle-monitor.sh"  refwall
-#define auto_monitor    scripts "mons -a &"  refwall
+#define cycle_audio     scripts "cycle-audio.sh"    refbar
 
 /* miscellaneous commands */
 #define lock_pause      scripts "lock-n-pause.sh" refbar
@@ -123,7 +129,7 @@ static Key keys[] = {
 	{ MODKEY,                   XK_Return,                 spawn,          {.v = termcmd } },
 	{ MODKEY,                   XK_d,                      spawn,          SHCMD(roficmd) },
     { MODKEY,                   XK_t,                      spawn,          SHCMD(cycle_monitor) },
-    { MODKEY,                   XK_y,                      spawn,          SHCMD(auto_monitor) },
+    { MODKEY,                   XK_y,                      spawn,          SHCMD(cycle_audio) },
     { MODKEY,                   XK_semicolon,              spawn,          SHCMD(lock_pause) },
     { MODKEY,                   XK_n,                      spawn,          SHCMD(bt_on) },
     { MODKEY,                   XK_c,                      spawn,          SHCMD(change_wall) },
@@ -156,8 +162,8 @@ static Key keys[] = {
 	{ MODKEY,                   XK_b,          togglebar,      {0} },
 	{ MODKEY,                   XK_j,          focusstack,     {.i = +1 } },
 	{ MODKEY,                   XK_k,          focusstack,     {.i = -1 } },
-	{ MODKEY,                   XK_i,          incnmaster,     {.i = +1 } },
-	{ MODKEY,                   XK_p,          incnmaster,     {.i = -1 } },
+	// { MODKEY,                   XK_i,          incnmaster,     {.i = +1 } },
+	// { MODKEY,                   XK_p,          incnmaster,     {.i = -1 } },
 	{ MODKEY,                   XK_h,          setmfact,       {.f = -0.05} },
 	{ MODKEY,                   XK_l,          setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,         XK_Return,     zoom,           {0} },
