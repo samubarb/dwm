@@ -80,7 +80,7 @@ static const char *termcmd[]  = { "st", NULL };
 #define refwall         "; " scripts "set-wallpaper"
 
 /* rofi/dmenu command */
-#define roficmd         "j4-dmenu-desktop --dmenu='rofi -dmenu -p Run -theme purple -i'"
+#define roficmd         "j4-dmenu-desktop --dmenu='rofi -dmenu -p Run -font Fantasque\\ Sans\\ Mono\\ 15 -theme purple -i'"
 
 /* external screen commands */
 #define cycle_monitor   scripts "cycle-monitor.sh"  refwall
