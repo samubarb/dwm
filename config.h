@@ -111,9 +111,9 @@ static const char *termcmd[]  = { "st", NULL };
 #define brightness_down "xbacklight -5"
 
 /* screenshot commands */
-#define entire_shot     "scrot "                screenshots format_str
-#define window_shot     "scrot -u "             screenshots format_str
-#define custom_shot     "sleep .2; scrot -s "   screenshots format_str
+#define entire_shot     "maim "         screenshots format_str
+#define custom_shot     "maim -s -u "   screenshots format_str
+#define window_shot     "maim -i $(xdotool getactivewindow) "   screenshots format_str
 
 /* shutdown dialog */
 #define shutdown_dialog "~/SimpleShutdownDialog/shutdown-dialog"
