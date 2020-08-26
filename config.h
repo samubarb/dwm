@@ -71,13 +71,17 @@ static const char *termcmd[]  = { "st", NULL };
 /* custom paths */
 #define scripts         "~/.scripts/"
 #define screenshots     "~/Pictures/Screenshots/"
-#define format_str      "%b%d-%H:%M:%S.png"
+#define format_str      "$(date +%F_%T).png"       // maim
+// #define format_str      "%b%d-%H:%M:%S.png"     // scrot
 
 /* dwm status bar refresh command */
 #define refbar          "; " scripts "refresh_bar.sh"
 
 /* resetting wallpaper */
 #define refwall         "; " scripts "set-wallpaper"
+
+/* open chat apps */
+#define chats           scripts "private-chats.sh"
 
 /* rofi/dmenu command */
 #define roficmd         "j4-dmenu-desktop --dmenu='rofi -dmenu -p Run -font Fantasque\\ Sans\\ Mono\\ 15 -theme purple -i'"
@@ -132,7 +136,7 @@ static Key keys[] = {
     { MODKEY,                   XK_y,                      spawn,          SHCMD(cycle_audio) },
     { MODKEY,                   XK_semicolon,              spawn,          SHCMD(lock_pause) },
     { MODKEY,                   XK_n,                      spawn,          SHCMD(bt_on) },
-    { MODKEY,                   XK_c,                      spawn,          SHCMD(change_wall) },
+    { MODKEY,                   XK_c,                      spawn,          SHCMD(chats) },
     { NOTHING,                  XF86XK_AudioPlay,          spawn,          SHCMD(media_play) },
     { NOTHING,                  XF86XK_AudioStop,          spawn,          SHCMD(media_stop) },
     { NOTHING,                  XF86XK_AudioNext,          spawn,          SHCMD(media_next) },
