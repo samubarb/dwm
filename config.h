@@ -6,6 +6,10 @@ static const unsigned int gappx     = 6;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int usealtbar          = 0;        /* 1 means use non-dwm status bar */
+static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
+static const char *alttrayname      = "tray";    /* Polybar tray instance name */
+static const char *altbarcmd        = "$HOME/bar.sh"; /* Alternate bar launch command */
 static const char *fonts[]          = { "FantasqueSansMono:size=13" };
 static const char dmenufont[]       = "FantasqueSansMono:size=10";
 static const char col_gray1[]       = "#222222";
@@ -64,7 +68,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "tilix", NULL };
 
 #define NOTHING 0
 
@@ -84,7 +88,7 @@ static const char *termcmd[]  = { "st", NULL };
 #define chats           scripts "private-chats.sh"
 
 /* rofi/dmenu command */
-#define roficmd         "j4-dmenu-desktop --dmenu='rofi -dmenu -p Run -font Fantasque\\ Sans\\ Mono\\ 15 -theme purple -i'"
+#define roficmd         "rofi -show drun"
 
 /* external screen commands */
 #define cycle_monitor   scripts "cycle-monitor.sh"  refwall
@@ -120,7 +124,7 @@ static const char *termcmd[]  = { "st", NULL };
 #define window_shot     "maim -i $(xdotool getactivewindow) "   screenshots format_str
 
 /* shutdown dialog */
-#define shutdown_dialog "~/SimpleShutdownDialog/shutdown-dialog"
+#define shutdown_dialog "shutdown-dialog"
 
 /* spotify copy to clipborad current song's link */
 #define sp_clip         scripts "sp clip"
@@ -131,7 +135,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                 key                        function        argument */
 	{ MODKEY,                   XK_Return,                 spawn,          {.v = termcmd } },
-	{ MODKEY,                   XK_d,                      spawn,          SHCMD(roficmd) },
+	{ MODKEY,                   XK_p,                      spawn,          SHCMD(roficmd) },
     { MODKEY,                   XK_t,                      spawn,          SHCMD(cycle_monitor) },
     { MODKEY,                   XK_y,                      spawn,          SHCMD(cycle_audio) },
     { MODKEY,                   XK_semicolon,              spawn,          SHCMD(lock_pause) },
